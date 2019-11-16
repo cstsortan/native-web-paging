@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scroll Snappy</title>
+</head>
+<body>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .carousel-container {
+            overflow-x: auto;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            scroll-snap-type: x mandatory;
+        }
+        .demo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            scroll-snap-stop: always;
+        }
+        .carousel-container > img {
+            scroll-snap-align: center;
+        }
+    </style>
+    <div class="carousel-container">
+        <!-- <img class="demo-image" src="https://picsum.photos/id/1/200/300" alt="Some Picusm Image"> -->
+    </div>
+
+    <script>
+        for (let i=0; i<100; i++) {
+            const img = document.createElement('img');
+            img.className = "demo-image";
+            img.setAttribute('loading', 'lazy');
+            img.src = `https://picsum.photos/id/${i}/400/600`;
+            document.querySelector('.carousel-container').appendChild(img)
+        }
+    </script>
+</body>
+</html>
